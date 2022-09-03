@@ -1,0 +1,17 @@
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.csproj.AssemblyReference.cache
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.csproj.SuggestedBindingRedirects.cache
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.Form1.resources
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.Properties.Resources.resources
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\CustomControls.RJControls.RJTextBox.resources
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.csproj.GenerateResource.cache
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.csproj.CoreCompileInputs.cache
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\bin\Debug\ShopritePMS.exe.config
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\bin\Debug\ShopritePMS.exe
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\bin\Debug\ShopritePMS.pdb
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.exe
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.pdb
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.Splash.resources
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.ProductForm.resources
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.AttendantForm.resources
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.CategoryForm.resources
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.SellingForm.resources
