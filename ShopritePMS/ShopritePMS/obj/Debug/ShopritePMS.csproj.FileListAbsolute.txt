@@ -15,3 +15,5 @@ C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.ProductF
 C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.AttendantForm.resources
 C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.CategoryForm.resources
 C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\obj\Debug\ShopritePMS.SellingForm.resources
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\bin\Debug\smarketdb.mdf
+C:\Users\JED\source\repos\ShopritePMS\ShopritePMS\bin\Debug\smarketdb_log.ldf

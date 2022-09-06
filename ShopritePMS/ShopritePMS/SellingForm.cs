@@ -40,16 +40,28 @@ namespace ShopritePMS
             ProdDGV1.DataSource = ds.Tables[0];
             Con.Close();
         }
+        private void populateBill()
+        {
+            Con.Open();
+            string query = "select * from BillTb1";
+            SqlDataAdapter sda = new SqlDataAdapter(query, Con);
+            SqlCommandBuilder builder = new SqlCommandBuilder(sda);
+            var ds = new DataSet();
+            sda.Fill(ds);
+            BillsDGV.DataSource = ds.Tables[0];
+            Con.Close();
+        }
         private void SellingForm_Load(object sender, EventArgs e)
         {
             populate();
+            populateBill();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
+        int flag = 0;
         private void ProdDGV1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             ProdName.Texts = ProdDGV1.SelectedRows[0].Cells[0].Value.ToString();
@@ -82,18 +94,27 @@ namespace ShopritePMS
 
         private void button9_Click(object sender, EventArgs e)
         {
-            int n = 0, total = Convert.ToInt32(ProdPrice.Texts) * Convert.ToInt32(ProdQty.Texts);
-            int GrdTotal = 0;
-            DataGridViewRow newRow = new DataGridViewRow();
-            newRow.CreateCells(OrderDGV);
-            newRow.Cells[0].Value = n + 1;
-            newRow.Cells[1].Value = ProdName.Texts;
-            newRow.Cells[2].Value = ProdPrice.Texts;
-            newRow.Cells[3].Value = ProdQty.Texts;
-            newRow.Cells[4].Value = Convert.ToInt32(ProdPrice.Texts)* Convert.ToInt32(ProdQty.Texts);
-            OrderDGV.Rows.Add(newRow);
-            GrdTotal = GrdTotal+ total; 
-            Amtlbl.Text = "Ghc "+ GrdTotal;
+           
+            int GrdTotal = 0, n = 0;
+            if (ProdName.Texts == "" || ProdQty.Texts == "")
+            {
+                MessageBox.Show("Missing Data"); 
+            }
+            else
+            {
+                int total = Convert.ToInt32(ProdPrice.Texts) * Convert.ToInt32(ProdQty.Texts);
+                DataGridViewRow newRow = new DataGridViewRow();
+                newRow.CreateCells(OrderDGV);
+                newRow.Cells[0].Value = n+1;
+                newRow.Cells[1].Value = ProdName.Texts;
+                newRow.Cells[2].Value = ProdPrice.Texts;
+                newRow.Cells[3].Value = ProdQty.Texts;
+                newRow.Cells[4].Value = Convert.ToInt32(ProdPrice.Texts) * Convert.ToInt32(ProdQty.Texts);
+                OrderDGV.Rows.Add(newRow);
+                GrdTotal = GrdTotal + total;
+                Amtlbl.Text = " " + GrdTotal;
+                n++;
+            }
         }
 
         private void OrderDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -104,6 +125,54 @@ namespace ShopritePMS
         private void Amtlbl_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (BillId.Texts == "")
+            {
+                MessageBox.Show("Missing Bill Id");
+            }
+            else
+            {
+                try
+                {
+                    Con.Open();
+                    string query = "Insert into BillTb1 values(" + BillId.Texts + ",'" + Sellerlbl.Text + "', '" + Datelbl.Text + "'," + Amtlbl.Text + " )";
+                    SqlCommand cmd = new SqlCommand(query, Con);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Order Added Successfully");
+                    Con.Close();
+                    populateBill();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void BillsDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            flag = 1;
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("SHOPRITE", new Font("Century Gothic", 25, FontStyle.Bold), Brushes.Red, new Point(300));
+            e.Graphics.DrawString("Bill ID: "+BillsDGV.SelectedRows[0].Cells[0].Value.ToString(), new Font("Century Gothic", 15, FontStyle.Bold), Brushes.Black, new Point(100, 70));
+            e.Graphics.DrawString("Seller Name: " + BillsDGV.SelectedRows[0].Cells[1].Value.ToString(), new Font("Century Gothic", 15, FontStyle.Bold), Brushes.Black, new Point(100, 100));
+            e.Graphics.DrawString("Date: " + BillsDGV.SelectedRows[0].Cells[2].Value.ToString(), new Font("Century Gothic", 15, FontStyle.Bold), Brushes.Black, new Point(100, 130));
+            e.Graphics.DrawString("Total Amount: " + BillsDGV.SelectedRows[0].Cells[3].Value.ToString(), new Font("Century Gothic", 15, FontStyle.Bold), Brushes.Black, new Point(100, 160));
+            e.Graphics.DrawString("CodeSpace ", new Font("Century Gothic", 20, FontStyle.Italic), Brushes.Red, new Point(300, 300));
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if(printPreviewDialog1.ShowDialog() == DialogResult.OK )
+            {
+                printDocument1.Print();
+            }
         }
     }
 }
